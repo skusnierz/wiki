@@ -1,0 +1,15 @@
+<div class="text-center center">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" [src]="course.image">
+    <div class="card-body">
+      <h5 class="card-title">{{course.name}}</h5>
+      <ul class="list-group">
+          <li class="list-group-item">ECTS : {{course.ects}}</li>
+          <li class="list-group-item">Semester : {{course.semester}}</li>
+          <li class="list-group-item">Max Attendees : {{course.maxStudents}}</li>
+          <li class="list-group-item">Course Form : {{course.courseForm}}</li>
+        </ul>
+      <a (click)="goToDetails()" class="btn btn-primary mt-2">Details</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<app-navBar></app-navBar>
+<div class="container mt-100">
+  <form [formGroup]="addCoursesForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="courseName"> Course Name </label>
+      <input type="text" formControlName="courseName" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.courseName.errors }" />
+      <div *ngIf="submitted && f.courseName.errors" class="invalid-feedback">
+        <div *ngIf="f.courseName.errors.required">Course Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="semester">Semester</label>
+      <input type="text" formControlName="semester" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.semester.errors }" />
+      <div *ngIf="submitted && f.semester.errors" class="invalid-feedback">
+        <div *ngIf="f.semester.errors.required">Last Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="maxAttendees">Max Attendees</label>
+      <input type="text" formControlName="maxAttendees" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.maxAttendees.errors }" />
+      <div *ngIf="submitted && f.maxAttendees.errors" class="invalid-feedback">
+        <div *ngIf="f.maxAttendees.errors.required">Max Attendees is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">Image Url</label>
+      <input type="text" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.imageUrl.errors }" />
+      <div *ngIf="submitted && f.imageUrl.errors" class="invalid-feedback">
+        <div *ngIf="f.imageUrl.errors.required">Image Url is required</div>
+        <div *ngIf="f.imageUrl.errors.minlength">Image Url must be at least 6 characters</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="courseForm">Course Form</label>
+      <input type="courseForm" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.courseForm.errors }" />
+      <div *ngIf="submitted && f.courseForm.errors" class="invalid-feedback">
+        <div *ngIf="f.courseForm.errors.required">Course Form is required</div>
+        <div *ngIf="f.courseForm.errors.minlength">Course Form must be at least 6 characters</div>
+      </div>
+    </div>
+  </form>
+</div>

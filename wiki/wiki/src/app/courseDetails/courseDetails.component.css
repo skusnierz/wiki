@@ -1,0 +1,13 @@
+.container {
+    margin-top: 50px;
+    padding: 10px;
+}
+.col-centered {
+    float: none;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+.center {
+    justify-content: center;
+}

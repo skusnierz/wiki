@@ -1,0 +1,8 @@
+<app-navBar></app-navBar> 
+
+<app-filter (valueChange)='filterCourses($event)'></app-filter>
+<div class="row col-centered mt-5">
+  <div *ngFor="let c of this.filtredCoursesList">
+    <app-course [course]="c"> </app-course>
+  </div>
+</div>

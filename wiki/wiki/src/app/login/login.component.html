@@ -1,0 +1,25 @@
+<div class="login-page">
+  <div class="form">
+    <form class="login-form needs-validation" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+
+      <input id="name" type="email" class="form-control" placeholder="Email" formControlName="email"
+        [ngClass]="{ 'is-invalid': formSubmitAttempt && f.email.errors }" required>
+      <div *ngIf="formSubmitAttempt && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        <div *ngIf="f.email.errors.required">Email is required</div>
+      </div>
+
+      <input class="form-control" type="password" placeholder="Password" formControlName="password"
+        [ngClass]="{ 'is-invalid': formSubmitAttempt}" required>
+      <div *ngIf="formSubmitAttempt" class="invalid-feedback">
+        <div *ngIf="invalidData">Password or Email is invalid</div>
+        <div *ngIf="f.password.errors && f.password.errors.required">Password is required</div>
+      </div>
+
+      <button type="submit">Login</button>
+      <p class="message">Already registered? <a (click)="displayRegisterForm()">Sign In</a> </p>
+      <p class="message"> <a (click)="displayRegisterForm()">Login in as Guest</a> </p>
+      
+    </form>
+  </div>
+</div>
