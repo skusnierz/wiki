@@ -18,7 +18,7 @@ const routes: Routes = [
     path: 'addCourse', component: AddCourseComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'home/:user', component: HomeComponent, canActivate: [AuthGuard]
+    path: 'home/:role', component: HomeComponent, canActivate: [AuthGuard]
   },
   {
     path: '',

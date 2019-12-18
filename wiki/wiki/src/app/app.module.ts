@@ -28,6 +28,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { FormsModule } from '@angular/forms';
 import { AddCourseComponent } from './addCourse/addCourse.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AdminDashboardComponent } from './adminDashboard/adminDashboard.component';
 
 @NgModule({
    declarations: [
@@ -42,7 +43,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
       FilterComponent,
       CourseDetailsComponent,
       NavBarComponent,
-      AddCourseComponent
+      AddCourseComponent,
+      AdminDashboardComponent
    ],
    imports: [
       FormsModule,
@@ -57,7 +59,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
       TooltipModule.forRoot(),
       ModalModule.forRoot(),
       Ng5SliderModule,
-      NgSelectModule,
+      NgSelectModule
    ],
    providers: [
       AuthService,

@@ -9,7 +9,9 @@
           <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">Courses</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/filters">Filters</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/addCourse">Add Course</a></li>
-          <li class="nav-item"><a class="nav-link">Admin Dashboard</a></li>
+          <div *ngIf="canDisplayDashboard">
+            <li class="nav-item"><a class="nav-link">Admin Dashboard</a></li>
+          </div>
         </ul>
         <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
           <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"><i

@@ -1,5 +1,5 @@
 import { AuthService } from './../auth/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navBar',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navBar.component.css']
 })
 export class NavBarComponent implements OnInit {
+
+  // tslint:disable-next-line: ban-types
+  @Input() canDisplayDashboard: Boolean;
 
   constructor(
     private authService: AuthService

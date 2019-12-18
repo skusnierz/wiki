@@ -3,11 +3,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { element } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  roleList = [
+    {
+      name: 'admin',
+      permissions: {
+        deleteCourse: true,
+        addCourse: true,
+        adminDashboard: true
+      }
+    },
+    {
+      name: 'customUser',
+      permissions: {
+        deleteCourse: false,
+        addCourse: false,
+        adminDashboard: false
+      }
+    },
+  ];
 
   baseurl = 'http://localhost:3000';
   public isDone: boolean;
@@ -32,36 +52,17 @@ export class UserService {
       err => {
         this.isDone = false;
       });
-    }
-
-  // GET
-  GetUser(id): Observable<User> {
-    return this.http.get<User>(this.baseurl + '/users/' + id)
-      .pipe(
-        retry(1),
-        catchError(this.errorHandl)
-      );
   }
 
-  // GET
-  GetUsers(): Observable<User> {
-    return this.http.get<User>(this.baseurl + '/users/')
-      .pipe(
-        retry(1),
-        catchError(this.errorHandl));
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseurl + '/users');
   }
 
-  // Error handling
-  errorHandl(error) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+  havePermission(role: string, permission: any) {
+    for (const ele of this.roleList) {
+      if (ele.name === role) {
+        return ele.permissions[permission];
+      }
     }
-    console.log(errorMessage);
-    return throwError(errorMessage);
   }
 }

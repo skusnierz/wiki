@@ -66,7 +66,8 @@ export class RegisterComponent implements OnInit {
     const user: User = {
       id: this.form.value.email,
       email: this.form.value.email,
-      password: this.form.value.password
+      password: this.form.value.password,
+      role: undefined
     };
 
     if (!this.passwordsMustMatch()) { return; }
