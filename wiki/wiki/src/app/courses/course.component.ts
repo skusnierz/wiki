@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Course } from '../Course';
+import { Course } from '../model/Course';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -10,11 +10,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CourseComponent implements OnInit {
   @Input() course: Course;
   constructor(private router: Router) {}
-
+  submitted = false;
   ngOnInit() {
   }
 
   goToDetails() {
     this.router.navigateByUrl('/details', { state: this.course });
   }
+
+
 }

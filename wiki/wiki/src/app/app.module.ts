@@ -1,5 +1,5 @@
 import { SearchPipe } from './pipe/search.pipe';
-import { CourseComponent } from './course/course.component';
+import { CourseComponent } from './courses/course.component';
 import { UserService } from './services/user.service';
 import { RegisterLayoutComponent } from './layouts/register-layout.component';
 import { NgModule } from '@angular/core';
@@ -27,6 +27,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { Ng5SliderModule } from 'ng5-slider';
 import { FormsModule } from '@angular/forms';
 import { AddCourseComponent } from './addCourse/addCourse.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
    declarations: [
@@ -55,7 +56,8 @@ import { AddCourseComponent } from './addCourse/addCourse.component';
       BsDropdownModule.forRoot(),
       TooltipModule.forRoot(),
       ModalModule.forRoot(),
-      Ng5SliderModule
+      Ng5SliderModule,
+      NgSelectModule,
    ],
    providers: [
       AuthService,

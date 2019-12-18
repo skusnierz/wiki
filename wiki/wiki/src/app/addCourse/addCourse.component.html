@@ -1,5 +1,6 @@
 <app-navBar></app-navBar>
 <div class="container mt-100">
+
   <form [formGroup]="addCoursesForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="courseName"> Course Name </label>
@@ -9,39 +10,45 @@
         <div *ngIf="f.courseName.errors.required">Course Name is required</div>
       </div>
     </div>
+
     <div class="form-group">
-      <label for="semester">Semester</label>
-      <input type="text" formControlName="semester" class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f.semester.errors }" />
-      <div *ngIf="submitted && f.semester.errors" class="invalid-feedback">
-        <div *ngIf="f.semester.errors.required">Last Name is required</div>
-      </div>
+      <label for="courseName"> Semester </label>
+      <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
     </div>
+
     <div class="form-group">
       <label for="maxAttendees">Max Attendees</label>
-      <input type="text" formControlName="maxAttendees" class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f.maxAttendees.errors }" />
-      <div *ngIf="submitted && f.maxAttendees.errors" class="invalid-feedback">
-        <div *ngIf="f.maxAttendees.errors.required">Max Attendees is required</div>
+      <input type="number" formControlName="maxAttendees" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && (f.maxAttendees.errors || maxAttendeesValid())}" />
+      <div *ngIf="submitted" class="invalid-feedback">
+        <div *ngIf="maxAttendeesValid()">Max Attendees have to under 0 </div>
+        <div *ngIf="f.maxAttendees.errors && f.maxAttendees.errors.required">Max Attendees is required</div>
       </div>
     </div>
+
     <div class="form-group">
       <label for="imageUrl">Image Url</label>
-      <input type="text" class="form-control"
+      <input type="text" formControlName="imageUrl" class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f.imageUrl.errors }" />
       <div *ngIf="submitted && f.imageUrl.errors" class="invalid-feedback">
         <div *ngIf="f.imageUrl.errors.required">Image Url is required</div>
-        <div *ngIf="f.imageUrl.errors.minlength">Image Url must be at least 6 characters</div>
+        <div *ngIf="f.imageUrl.errors.pattern">Image Url format is invalid</div>
       </div>
     </div>
+
     <div class="form-group">
-      <label for="courseForm">Course Form</label>
-      <input type="courseForm" class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f.courseForm.errors }" />
-      <div *ngIf="submitted && f.courseForm.errors" class="invalid-feedback">
-        <div *ngIf="f.courseForm.errors.required">Course Form is required</div>
-        <div *ngIf="f.courseForm.errors.minlength">Course Form must be at least 6 characters</div>
+      <label>Course Form</label>
+      <ng-select [style.border-color]=" submitted && courseFormIsEmpty() ? '#dc3545': '#fff'" 
+      [ngModelOptions]="{standalone: true}" [items]="courseForms" (removed)="removed()" bindLabel="name" bindValue="id" placeholder="Select course"
+        [(ngModel)]="selectedCourse" >
+      </ng-select>
+      <div *ngIf="submitted && courseFormIsEmpty()">
+        <div class="message">Course Form is required</div>
       </div>
+    </div>
+
+    <div class="center">
+      <a (click)="submit()" class="btn btn-primary text-light mt-2">Submit</a>
     </div>
   </form>
 </div>

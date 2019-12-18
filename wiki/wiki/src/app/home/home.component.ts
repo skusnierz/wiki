@@ -1,3 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+import { User } from './../auth/user';
 import { SearchPipe } from './../pipe/search.pipe';
 import { CourseService } from './../services/course.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,15 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  loggedUser: any;
   coursesList: any = [];
   filtredCoursesList: any = [];
+  private sub: any;
   baseurl = 'http://localhost:3000';
   constructor(
     private courseService: CourseService,
-    private searchPipe: SearchPipe
+    private searchPipe: SearchPipe,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      console.log(params);
+    });
     this.courseService.getCourses().subscribe((data: {}) => {
       this.coursesList = data;
       this.filtredCoursesList = data;

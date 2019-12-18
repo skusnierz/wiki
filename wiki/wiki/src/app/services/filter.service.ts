@@ -1,5 +1,5 @@
+import { Course } from './../model/Course';
 import { SearchPipe } from './../pipe/search.pipe';
-import { Course } from './../Course';
 import { Injectable } from '@angular/core';
 
 

@@ -9,13 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class CourseDetailsComponent implements OnInit {
 
   course;
+  selected = 0;
+  hovered = 0;
+  readonly = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    console.log(this.router.getCurrentNavigation().extras.state);
 }
 
 ngOnInit() {
-    console.log(history.state);
     this.course = history.state;
 }
 

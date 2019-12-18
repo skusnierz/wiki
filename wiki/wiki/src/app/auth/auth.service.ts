@@ -16,12 +16,12 @@ export class AuthService {
   ) {}
 
   login(user: User, users: User[]) {
-    this.loggedIn.next(true);
-    this.router.navigate(['/']);
+    // this.loggedIn.next(true);
+    // this.router.navigate(['/']);
     users.forEach(element => {
       if ( element.email === user.email && element.password === user.password ) {
         this.loggedIn.next(true);
-        this.router.navigate(['/']);
+        this.router.navigate(['/home', element.email]);
         return false;
       }
     });

@@ -12,13 +12,13 @@ import { HomeLayoutComponent } from './layouts/home-layout.component';
 
 const routes: Routes = [
   {
-    path: 'details', component: CourseDetailsComponent
+    path: 'details', component: CourseDetailsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'addCourse', component: AddCourseComponent
+    path: 'addCourse', component: AddCourseComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'home', component: HomeComponent, canActivate: [AuthGuard]
+    path: 'home/:user', component: HomeComponent, canActivate: [AuthGuard]
   },
   {
     path: '',

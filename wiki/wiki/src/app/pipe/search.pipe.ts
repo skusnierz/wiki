@@ -1,5 +1,5 @@
-import { Rating } from './../Rating';
-import { Course } from './../Course';
+import { Rating } from './../model/Rating';
+import { Course } from './../model/Course';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

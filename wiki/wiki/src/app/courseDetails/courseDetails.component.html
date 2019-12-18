@@ -26,6 +26,17 @@
                 <div class="card-header">
                     Product Reviews
                 </div>
+                <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly">
+                </ngb-rating>
+                <hr>
+                <pre>
+                    Selected: <b>{{selected}}</b>
+                    Hovered: <b>{{hovered}}</b>
+                </pre>
+                <button class="btn btn-sm btn-outline-{{readonly ? 'danger' : 'success'}}"
+                    (click)="readonly = !readonly">
+                    {{ readonly ? "readonly" : "editable"}}
+                </button>
                 <div class="card-body">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore,
                         similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
@@ -42,7 +53,7 @@
                         Sequi mollitia, necessitatibus quae sint natus.</p>
                     <small class="text-muted">Posted by Anonymous on 3/1/17</small>
                     <hr>
-                    <a href="#" class="btn btn-success">Leave a Review</a>
+                    <a class="btn btn-success">Leave a Review</a>
                 </div>
             </div>
             <!-- /.card -->
