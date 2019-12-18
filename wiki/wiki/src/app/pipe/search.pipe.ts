@@ -24,6 +24,9 @@ export class SearchPipe implements PipeTransform {
       return courses.filter(course => {
         const sum = course.ratings.reduce((acc, cur) => acc + cur.rating, 0);
         const ratingsQuantity = course.ratings.length;
+        if (ratingsQuantity === 0) {
+          return course.ects >= minEtcs && course.ects <= maxEtcs && this.checkSemester(course.semester, semesters);
+        }
         return course.ects >= minEtcs && course.ects <= maxEtcs
           && (sum / ratingsQuantity) >= minRating && (sum / ratingsQuantity) <= maxRating && this.checkSemester(course.semester, semesters);
       });
@@ -34,6 +37,9 @@ export class SearchPipe implements PipeTransform {
     return courses.filter(course => {
       const sum = course.ratings.reduce((acc, cur) => acc + cur.rating, 0);
       const ratingsQuantity = course.ratings.length;
+      if (ratingsQuantity === 0) {
+        return course.ects >= minEtcs && course.ects <= maxEtcs && this.checkSemester(course.semester, semesters);
+      }
       return course.name.toLowerCase().includes(searchText) && course.ects >= minEtcs && course.ects <= maxEtcs
         && (sum / ratingsQuantity) >= minRating && (sum / ratingsQuantity) <= maxRating && this.checkSemester(course.semester, semesters);
     });

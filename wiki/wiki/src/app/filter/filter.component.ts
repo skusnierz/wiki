@@ -23,7 +23,7 @@ export class FilterComponent implements OnInit {
   public selectedSemester = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   minValueEtcs = 0;
-  maxValueEtcs = 10;
+  maxValueEtcs = 15;
   optionsEtcs: Options = {
     floor: 0,
     ceil: 15,

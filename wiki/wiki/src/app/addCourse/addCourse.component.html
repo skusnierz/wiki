@@ -12,7 +12,7 @@
     </div>
 
     <div class="form-group">
-      <label for="courseName"> Semester </label>
+      <label> Semester </label>
       <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
     </div>
 
@@ -40,7 +40,7 @@
       <label>Course Form</label>
       <ng-select [style.border-color]=" submitted && courseFormIsEmpty() ? '#dc3545': '#fff'" 
       [ngModelOptions]="{standalone: true}" [items]="courseForms" (removed)="removed()" bindLabel="name" bindValue="id" placeholder="Select course"
-        [(ngModel)]="selectedCourse" >
+        [(ngModel)]="selectedCourseForm" >
       </ng-select>
       <div *ngIf="submitted && courseFormIsEmpty()">
         <div class="message">Course Form is required</div>

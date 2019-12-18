@@ -15,4 +15,14 @@ export class CourseService {
     return this.http.get<Course[]>(this.baseurl + '/Courses');
   }
 
+  addNewCourse(course: Course) {
+    this.http.post(this.baseurl + '/courses/', course).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      });
+  }
 }
+

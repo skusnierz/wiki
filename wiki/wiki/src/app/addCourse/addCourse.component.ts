@@ -1,3 +1,5 @@
+import { Course } from './../model/Course';
+import { CourseService } from './../services/course.service';
 import { Options } from 'ng5-slider';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -12,13 +14,14 @@ import { NgOption } from '@ng-select/ng-select';
 export class AddCourseComponent implements OnInit {
 
   courseForms: NgOption[] = [
-    { id: 1, name: 'Vilnius' },
-    { id: 2, name: 'Kaunas' },
-    { id: 3, name: 'Pabradė' }
+    { id: 1, name: 'Lecture' },
+    { id: 2, name: 'Excercise' },
+    { id: 2, name: 'Project' },
+    { id: 3, name: 'Lab' }
   ];
-  selectedCourse: any;
+  selectedCourseForm: any;
 
-  number = 5;
+  value: number = 5;
   options: Options = {
     showTicksValues: true,
     stepsArray: [
@@ -37,7 +40,8 @@ export class AddCourseComponent implements OnInit {
 
   addCoursesForm: FormGroup;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private courseService: CourseService
   ) { }
 
   submitted = false;
@@ -46,7 +50,6 @@ export class AddCourseComponent implements OnInit {
     this.addCoursesForm = this.fb.group({
       courseName: ['', [Validators.required]],
       maxAttendees: ['', [Validators.required]],
-      courseForm: ['', [Validators.required]],
       imageUrl: ['', [Validators.required, Validators.pattern('^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpeg|jpg|gif|png)$')]],
     });
   }
@@ -61,14 +64,30 @@ export class AddCourseComponent implements OnInit {
 
   submit() {
     this.submitted = true;
+    if ( this.addCoursesForm.valid && !this.courseFormIsEmpty()) {
+      const course: Course = {
+        id: this.addCoursesForm.value.courseName,
+        name: this.addCoursesForm.value.courseName,
+        ects: this.addCoursesForm.value.maxAttendees,
+        semester: this.value,
+        maxStudents: this.addCoursesForm.value.maxAttendees,
+        courseForm: this.courseForms[this.selectedCourseForm - 1].name,
+        ratings: [],
+        description: 'description',
+        image: this.addCoursesForm.value.imageUrl,
+        enrolledStudents: []
+      };
+      console.log(course);
+      this.courseService.addNewCourse(course);
+    }
   }
 
   courseFormIsEmpty() {
-    return this.selectedCourse === undefined || this.selectedCourse === null;
+    return this.selectedCourseForm === undefined || this.selectedCourseForm === null;
   }
 
   maxAttendeesValid() {
     return this.addCoursesForm.value.maxAttendees < 0 && this.addCoursesForm.value.maxAttendees !== null
-    && this.addCoursesForm.value.maxAttendees !== undefined;
+      && this.addCoursesForm.value.maxAttendees !== undefined;
   }
 }
