@@ -4,14 +4,20 @@
     <div class="card-body">
       <h5 class="card-title">{{course.name}}</h5>
       <ul class="list-group">
-          <li class="list-group-item">ECTS : {{course.ects}}</li>
-          <li class="list-group-item">Semester : {{course.semester}}</li>
-          <li class="list-group-item">Max Attendees : {{course.maxStudents}}</li>
-          <li class="list-group-item">Course Form : {{course.courseForm}}</li>
-        </ul>
-      <a (click)="goToDetails()" class="btn btn-primary text-light mt-2 ml-1 mr-1">Edit</a>
-      <a (click)="goToDetails()" class="btn btn-primary text-light mt-2 ml-1 mr-1">Details</a>
-      <a (click)="goToDetails()" class="btn btn-primary text-light mt-2 ml-1 mr-1">Delete</a>
+        <li class="list-group-item">ECTS : {{course.ects}}</li>
+        <li class="list-group-item">Semester : {{course.semester}}</li>
+        <li class="list-group-item">Max Attendees : {{course.maxStudents}}</li>
+        <li class="list-group-item">Course Form : {{course.courseForm}}</li>
+      </ul>
+      <div class="row center">
+        <div *ngIf="this.userService.isAdmin()">
+          <a (click)="goToDetails()" class="btn btn-primary text-light mt-2 ml-1 mr-1">Edit</a>
+        </div>
+        <a (click)="goToDetails()" class="btn btn-primary text-light mt-2 ml-1 mr-1">Details</a>
+        <div *ngIf="this.userService.isAdmin()">
+          <a (click)="goToDetails()" class="btn btn-primary text-light mt-2 ml-1 mr-1">Delete</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

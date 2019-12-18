@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -12,7 +13,8 @@ export class AuthService {
   }
 
   constructor(
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
 
   login(user: User, users: User[]) {
@@ -21,7 +23,8 @@ export class AuthService {
     users.forEach(element => {
       if ( element.email === user.email && element.password === user.password ) {
         this.loggedIn.next(true);
-        this.router.navigate(['/home', element.role]);
+        this.userService.setRole(element.role);
+        this.router.navigate(['/home']);
         return false;
       }
     });

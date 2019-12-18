@@ -29,6 +29,7 @@ export class UserService {
     },
   ];
 
+  role;
   baseurl = 'http://localhost:3000';
   public isDone: boolean;
   constructor(private http: HttpClient) { }
@@ -57,12 +58,19 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseurl + '/users');
   }
+  setRole(role: string) {
+    this.role = role;
+  }
 
-  havePermission(role: string, permission: any) {
+  havePermission(permission: any) {
     for (const ele of this.roleList) {
-      if (ele.name === role) {
+      if (ele.name === this.role) {
         return ele.permissions[permission];
       }
     }
+  }
+
+  isAdmin() {
+    return this.role === 'admin';
   }
 }

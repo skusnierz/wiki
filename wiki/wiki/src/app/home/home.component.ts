@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   filtredCoursesList: any = [];
   private sub: any;
   baseurl = 'http://localhost:3000';
-  canDisplayAdminDashboard = false;
+  isAdmin = false;
 
   constructor(
     private courseService: CourseService,
@@ -27,11 +27,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.loggedUserRole = params.role;
-      console.log(this.userService.havePermission(this.loggedUserRole, 'addCourse'));
-      this.canDisplayAdminDashboard = this.userService.havePermission(this.loggedUserRole, 'addCourse');
-    });
+    this.isAdmin = this.userService.havePermission('adminDashboard');
     this.courseService.getCourses().subscribe((data: {}) => {
       this.coursesList = data;
       this.filtredCoursesList = data;

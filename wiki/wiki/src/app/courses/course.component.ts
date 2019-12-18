@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { Router } from '@angular/router';
 import { Course } from '../model/Course';
 import { Component, OnInit, Input } from '@angular/core';
@@ -9,8 +10,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CourseComponent implements OnInit {
   @Input() course: Course;
-  constructor(private router: Router) {}
+  @Input() isAdmin: boolean;
+
+  constructor(
+    private router: Router,
+    private userService: UserService
+    ) {}
   submitted = false;
+  
   ngOnInit() {
   }
 

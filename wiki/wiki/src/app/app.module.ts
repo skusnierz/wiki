@@ -28,7 +28,6 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { FormsModule } from '@angular/forms';
 import { AddCourseComponent } from './addCourse/addCourse.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { AdminDashboardComponent } from './adminDashboard/adminDashboard.component';
 
 @NgModule({
    declarations: [
@@ -44,7 +43,6 @@ import { AdminDashboardComponent } from './adminDashboard/adminDashboard.compone
       CourseDetailsComponent,
       NavBarComponent,
       AddCourseComponent,
-      AdminDashboardComponent
    ],
    imports: [
       FormsModule,
