@@ -1,0 +1,10 @@
+.center{
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-img-top{
+    height: 192.359px;
+}

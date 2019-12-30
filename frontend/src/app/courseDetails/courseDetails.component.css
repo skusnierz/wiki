@@ -1,0 +1,59 @@
+.container {
+    margin-top: 50px;
+    padding: 10px;
+}
+.col-centered {
+    float: none;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+.center {
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+img {
+    width: 600px;
+    height: 400px;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+.stars-line{
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    background-color: rebeccapurple;
+}
+
+a {
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+.card-header {
+    margin-bottom: 5px;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  color: #d3d3d3;
+}
+.full {
+  color: red;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: red;
+}

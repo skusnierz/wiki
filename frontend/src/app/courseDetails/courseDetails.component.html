@@ -1,0 +1,49 @@
+<app-navBar> </app-navBar>
+
+<div class="container">
+  <div class="row center">
+    <div class="col-lg-9">
+      <div class="card mt-4">
+        <img class="card-img-top mt-3 img-fluid" [src]="this.course.image" alt="">
+        <div class="card-body text-center">
+          <h3 class="card-title"> {{ this.course.name }}</h3>
+          <p class="card-text"> {{ this.course.description  }}</p>
+        </div>
+        <hr>
+        <div class="center">
+          <label> Average Rate </label>
+          <div class="center">
+            <ng-template #t let-fill="fill">
+              <span class="star" [class.full]="fill === 100">
+                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+              </span>
+            </ng-template>
+
+            <ngb-rating [(rate)]="averageRating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+          </div>
+        </div>
+        <div *ngIf="this.userService.id">
+          <div class="center" *ngIf="!this.isEnrolled">
+            <a (click)="joinIn()" class="btn btn-primary text-light mt-2">Join in</a>
+          </div>
+          <div class="center" *ngIf="this.isEnrolled">
+            <a (click)="unsubscribe()" class="btn btn-primary text-light mt-2">Unsubscribe</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.card -->
+      <div *ngIf="this.isEnrolled">
+        <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Course Reviews
+          </div>
+          <div class="center">
+            <ngx-stars [readonly]="false" [size]="4" [initialStars]="currentRate" (ratingOutput)="onRatingSet($event)"
+              [customStarIcons]="starIcons"></ngx-stars>
+          </div>
+          <a (click)="submit()" class="btn btn-primary text-light mt-2">Submit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

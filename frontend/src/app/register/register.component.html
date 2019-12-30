@@ -1,0 +1,41 @@
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit(userName, password)" autocomplete="off">
+
+      <input type="email" placeholder="Email" class="form-control" formControlName="email"
+        [ngClass]="{ 'is-invalid': formSubmitAttempt}" required>
+      <div *ngIf="formSubmitAttempt" class="invalid-feedback">
+        <div *ngIf="emailAlreadyExist">This email adress already exist !</div>
+        <div *ngIf="f.email.errors && f.email.errors.email">Email must be a valid email address</div>
+        <div *ngIf="f.email.errors && f.email.errors.required">Email is required</div>
+      </div>
+
+      <input type="text" placeholder="Name" class="form-control" formControlName="name"
+        [ngClass]="{ 'is-invalid': formSubmitAttempt}" required>
+      <div *ngIf="formSubmitAttempt" class="invalid-feedback">
+        <div *ngIf="f.name.errors && f.name.errors.required">Name is required</div>
+      </div>
+
+      <input type="password" class="form-control" placeholder="Password" formControlName="password"
+        [ngClass]="{ 'is-invalid': formSubmitAttempt && f.password.errors }" required>
+      <div *ngIf="formSubmitAttempt && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.minlength">Password is too short (min 6)!</div>
+        <div *ngIf="f.password.errors.required">Password is required!</div>
+      </div>
+
+
+      <input type="password" class="form-control" placeholder="Confirm password" formControlName="conPassword"
+        [ngClass]="{ 'is-invalid': formSubmitAttempt}" required>
+      <div *ngIf="formSubmitAttempt" class="invalid-feedback">
+        <div *ngIf="!passwordsMustMatch()">Passwords dont match !</div>
+        <div *ngIf="f.conPassword.errors && f.conPassword.errors.minlength">Password is too short (min 6) !</div>
+        <div *ngIf="f.conPassword.errors && f.conPassword.errors.required">Confirm your password !</div>
+      </div>
+      <div *ngIf="registrationComplete" class="alert alert-success" role="alert">
+          Registration complete!
+      </div>
+      <button type="submit">Register</button>
+      <button (click)="onLogout()"> Back</button>
+    </form>
+  </div>
+</div>
