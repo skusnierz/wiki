@@ -1,0 +1,231 @@
+{
+  "users": [
+    {
+      "id": "marcin@123",
+      "name": "Marcin Debil",
+      "email": "marcin@123",
+      "password": "debil",
+      "role": "customUser"
+    },
+    {
+      "id": "admin@123",
+      "name": "Admin",
+      "email": "admin@123",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "marcin@1234",
+      "name": "Marcin",
+      "email": "marcin@1234",
+      "password": "marcin"
+    }
+  ],
+  "courses": [
+    {
+      "id": "0ee36cb0-4c51-4e77-9c4e-d0770285248a",
+      "name": "fizyka 1",
+      "image": "https://www.informatyka.agh.edu.pl/static/img/cooperation_tile.jpg",
+      "description": "Call method stuff report long. Modern affect edge.\nNothing share these man chair contain.\nLeave final guess unit law country. Identify peace inside tonight government past.",
+      "ects": 5,
+      "semester": 10,
+      "courseForm": "Lecture",
+      "maxStudents": 35,
+      "ratings": [
+        {
+          "rating": 1,
+          "studentId": "fa2253c9-9eb8-406f-b9b2-034f96a5b399"
+        },
+        {
+          "rating": 1,
+          "studentId": "0dd6c63a-fcba-4875-86b8-a2c1757d00ca"
+        },
+        {
+          "rating": 2,
+          "studentId": "7d46fcb3-b878-47cc-8061-f56255b2130d"
+        },
+        {
+          "rating": 2,
+          "studentId": "8d2aac1e-72f8-48d5-a682-d62899fd9814"
+        },
+        {
+          "rating": 4,
+          "studentId": "9aea76b1-31dd-4aef-9448-94577efcd78c"
+        },
+        {
+          "rating": 4,
+          "studentId": "815e15fa-accf-4047-b4ed-97bca53069ad"
+        },
+        {
+          "rating": 1,
+          "studentId": "8b672d6f-5d1a-41d2-a53e-57a67d60b927"
+        },
+        {
+          "rating": 5,
+          "studentId": "b6f39faf-5ac5-4edd-904f-27f236b19093"
+        },
+        {
+          "rating": 2,
+          "studentId": "c8be0507-31f8-4aef-a98b-f7ca5eba8718"
+        },
+        {
+          "rating": 5,
+          "studentId": "8b672d6f-5d1a-41d2-a53e-57a67d60b927"
+        },
+        {
+          "rating": 3,
+          "studentId": "66a2f73d-76a1-4ee0-94e4-1bfbb83e2ddc"
+        },
+        {
+          "rating": 1,
+          "studentId": "8b672d6f-5d1a-41d2-a53e-57a67d60b927"
+        },
+        {
+          "rating": 2,
+          "studentId": "b6f39faf-5ac5-4edd-904f-27f236b19093"
+        },
+        {
+          "rating": 2,
+          "studentId": "66a2f73d-76a1-4ee0-94e4-1bfbb83e2ddc"
+        },
+        {
+          "rating": 5,
+          "studentId": "66a2f73d-76a1-4ee0-94e4-1bfbb83e2ddc"
+        },
+        {
+          "rating": 3,
+          "studentId": "8a2ec5ab-bf1b-41eb-8941-5c79e698b765"
+        },
+        {
+          "rating": 2,
+          "studentId": "66a2f73d-76a1-4ee0-94e4-1bfbb83e2ddc"
+        },
+        {
+          "rating": 1,
+          "studentId": "c8be0507-31f8-4aef-a98b-f7ca5eba8718"
+        },
+        {
+          "rating": 4,
+          "studentId": "7561a7b5-120b-43c0-82da-0fbee8bb619f"
+        },
+        {
+          "rating": 4,
+          "studentId": "79cfcb1d-85e2-44cb-a0a0-6ab8cfaae630"
+        }
+      ],
+      "enrolledStudents": [
+        "fa2253c9-9eb8-406f-b9b2-034f96a5b399",
+        "0dd6c63a-fcba-4875-86b8-a2c1757d00ca",
+        "7d46fcb3-b878-47cc-8061-f56255b2130d",
+        "8d2aac1e-72f8-48d5-a682-d62899fd9814",
+        "9aea76b1-31dd-4aef-9448-94577efcd78c",
+        "815e15fa-accf-4047-b4ed-97bca53069ad",
+        "8b672d6f-5d1a-41d2-a53e-57a67d60b927",
+        "b6f39faf-5ac5-4edd-904f-27f236b19093",
+        "c8be0507-31f8-4aef-a98b-f7ca5eba8718",
+        "8b672d6f-5d1a-41d2-a53e-57a67d60b927",
+        "66a2f73d-76a1-4ee0-94e4-1bfbb83e2ddc",
+        "8b672d6f-5d1a-41d2-a53e-57a67d60b927",
+        "b6f39faf-5ac5-4edd-904f-27f236b19093",
+        "66a2f73d-76a1-4ee0-94e4-1bfbb83e2ddc",
+        "66a2f73d-76a1-4ee0-94e4-1bfbb83e2ddc",
+        "8a2ec5ab-bf1b-41eb-8941-5c79e698b765",
+        "66a2f73d-76a1-4ee0-94e4-1bfbb83e2ddc",
+        "c8be0507-31f8-4aef-a98b-f7ca5eba8718",
+        "7561a7b5-120b-43c0-82da-0fbee8bb619f",
+        "79cfcb1d-85e2-44cb-a0a0-6ab8cfaae630",
+        "admin@123"
+      ]
+    },
+    {
+      "id": "asdasd",
+      "name": "fizyka 7",
+      "ects": 14,
+      "semester": 2,
+      "maxStudents": 160,
+      "courseForm": "Lecture",
+      "ratings": [
+        {
+          "studentId": "admin@123",
+          "rating": 2.5
+        }
+      ],
+      "description": "description",
+      "image": "http://www.aip-group.pl/images/zdjecia/analiza-strategiczna.jpg",
+      "enrolledStudents": [
+        "admin@123"
+      ]
+    },
+    {
+      "id": "adasd123",
+      "name": "analiza 2",
+      "ects": 10,
+      "semester": 1,
+      "maxStudents": 120,
+      "courseForm": "Excercise",
+      "ratings": [
+        {
+          "studentId": "admin@123",
+          "rating": 5
+        }
+      ],
+      "description": "description",
+      "image": "http://www.aip-group.pl/images/zdjecia/analiza-strategiczna.jpg",
+      "enrolledStudents": [
+        "admin@123",
+        "admin@123",
+        "marcin@123"
+      ]
+    },
+    {
+      "id": "zxczxczxc",
+      "name": "fizyka 5",
+      "ects": 8,
+      "semester": 3,
+      "maxStudents": 80,
+      "courseForm": "Project",
+      "ratings": [],
+      "description": "description",
+      "image": "http://www.zsmikolajkipomorskie.szkolna.net/pliki/obraz/fizyka-1507041539.jpg",
+      "enrolledStudents": []
+    },
+    {
+      "id": "analiza 3",
+      "name": "analiza 3",
+      "ects": 5,
+      "semester": 7,
+      "maxStudents": 120,
+      "courseForm": "Excercise",
+      "ratings": [],
+      "description": "asdasd\nasdas\nzxczxc\nzxc",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Wojtek_the_bear.jpg",
+      "enrolledStudents": []
+    },
+    {
+      "_id": "",
+      "name": "asdasd",
+      "ects": 5,
+      "semester": 5,
+      "maxStudents": 120,
+      "courseForm": "Excercise",
+      "ratings": [],
+      "description": "adasd\nasdasd",
+      "image": "http://www.uczelnie.info.pl/data/catalogueB/StMTEwLTI0MjMyMS1tYXRtYV9rczIuanBn.jpg",
+      "enrolledStudents": [],
+      "id": "NNiiIKs"
+    },
+    {
+      "_id": "",
+      "name": "asdas",
+      "ects": 5,
+      "semester": 5,
+      "maxStudents": 12,
+      "courseForm": "Project",
+      "ratings": [],
+      "description": "zxcxc",
+      "image": "http://www.uczelnie.info.pl/data/catalogueB/StMTEwLTI0MjMyMS1tYXRtYV9rczIuanBn.jpg",
+      "enrolledStudents": [],
+      "id": "Za3ZwB6"
+    }
+  ]
+}
