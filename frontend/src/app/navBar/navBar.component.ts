@@ -9,12 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
+  public isCollapsed: boolean;
   constructor(
     private authService: AuthService,
     private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.isCollapsed = true;
   }
 
   getUserName() {
