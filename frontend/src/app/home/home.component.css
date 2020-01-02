@@ -16,3 +16,10 @@ button:focus {
 .navbar .dropdown-menu .form-control {
     width: 200px;
 }
+
+.center {
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

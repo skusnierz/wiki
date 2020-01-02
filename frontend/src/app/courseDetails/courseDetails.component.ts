@@ -14,9 +14,11 @@ import { ThrowStmt } from '@angular/compiler';
 export class CourseDetailsComponent implements OnInit {
 
   rate;
+  id;
   course;
-  course1;
   currentRate;
+  maxStudents;
+  numberEnrolledStudents;
   isEnrolled = false;
   averageRating: number;
   starIcons = {
@@ -33,31 +35,32 @@ export class CourseDetailsComponent implements OnInit {
   ) {
   }
 
-  async ngOnInit() {
-    this.course = history.state;
-    this.courseSubscription = this.courseService.subscribeCourse(this.course._id).subscribe(message => {
+  ngOnInit() {
+    this.id = history.state._id;
+    console.log(history.state._id);
+    this.courseSubscription = this.courseService.subscribeCourse(this.id).subscribe(message => {
       if (message) {
-        this.course1 = message;
-        const sum = this.course1.ratings.reduce((acc, cur) => acc + cur.rating, 0);
-        const ratingsQuantity = this.course1.ratings.length;
+        this.course = message;
+        const sum = this.course.ratings.reduce((acc, cur) => acc + cur.rating, 0);
+        const ratingsQuantity = this.course.ratings.length;
         if (ratingsQuantity === 0) {
           this.averageRating = 0;
         } else {
           this.averageRating = sum / ratingsQuantity;
         }
+        // check is user enrolled to course
+        this.isEnrolled = ((this.course.enrolledStudents.find((ele) => ele === this.userService.id)) === this.userService.id);
+        this.rate = this.course.ratings.find((ele) => ele.studentId === this.userService.id);
+        if (this.rate === undefined) {
+          this.currentRate = 2.5;
+        } else {
+          this.currentRate = this.rate.rating;
+        }
       } else {
-        this.course1 = null;
+        this.course = null;
       }
     });
 
-    // check is user enrolled tp course
-    this.isEnrolled = ((this.course.enrolledStudents.find((ele) => ele === this.userService.id)) === this.userService.id);
-    this.rate = this.course.ratings.find((ele) => ele.studentId === this.userService.id);
-    if (this.rate === undefined) {
-      this.currentRate = 2.5;
-    } else {
-      this.currentRate = this.rate.rating;
-    }
   }
 
   onRatingSet($event) {

@@ -6,7 +6,7 @@ import { User } from './user';
 
 @Injectable()
 export class AuthService {
-  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
@@ -15,11 +15,20 @@ export class AuthService {
   constructor(
     private router: Router,
     private userService: UserService
-  ) {}
+  ) { }
 
   login() {
-    this.loggedIn.next(true);
-    this.router.navigate(['/home']);
+    this.userService.getUser().subscribe(
+      res => {
+        this.userService.setName(res['data'].name);
+        this.userService.setRole(res['data'].role);
+        this.loggedIn.next(true);
+        this.router.navigate(['/home']);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   navigateRegister() {
@@ -28,6 +37,8 @@ export class AuthService {
 
   logout() {
     this.loggedIn.next(false);
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 }

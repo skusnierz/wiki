@@ -31,7 +31,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { EditCourseComponent } from './editCourse/editCourse.component';
 import { NgxStarsModule } from 'ngx-stars';
 import {RatingModule} from 'node_modules/ngx-rating';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
    declarations: [
       AppComponent,
@@ -64,7 +64,8 @@ import {RatingModule} from 'node_modules/ngx-rating';
       Ng5SliderModule,
       NgSelectModule,
       NgxStarsModule,
-      RatingModule
+      RatingModule,
+      NgxPaginationModule
    ],
    providers: [
       AuthService,

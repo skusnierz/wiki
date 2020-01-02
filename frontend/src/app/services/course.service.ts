@@ -110,8 +110,11 @@ export class CourseService {
   async addStudtenToCourse(courseId: string, userId: string) {
     let course;
     await this.getCourse(courseId).toPromise().then(res => { course = res['data']; });
-    course.enrolledStudents.push(userId);
-    this.updateCourse(course, courseId);
+    if (course.enrolledStudents.length !== course.maxStudents) {
+      course.enrolledStudents.push(userId);
+      this.updateCourse(course, courseId);
+      this.currentCourse.next(course);
+    }
   }
 
 }

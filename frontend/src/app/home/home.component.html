@@ -1,8 +1,18 @@
-<app-navBar></app-navBar> 
+<app-navBar></app-navBar>
 
 <app-filter (valueChange)='filterCourses($event)'></app-filter>
-<div class="row col-centered mt-5">
-  <div  *ngFor="let c of this.filtredCoursesList">
+<div class="row col-centered mt-5 ml-5 mr-5">
+  <div *ngFor="let c of this.filtredCoursesList | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
     <app-course class="mt-2" [course]="c"> </app-course>
   </div>
+</div>
+<div class="center mb-5">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  Items per page :
+  <button type="button" (click)="setItemsPerPage(1)" class="btn btn-outline-primary m-1" data-toggle="button"
+    aria-pressed="false" autocomplete="off">1</button>
+  <button type="button" (click)="setItemsPerPage(10)" class="btn btn-outline-primary m-1" data-toggle="button"
+    aria-pressed="false" autocomplete="off">10</button>
+  <button type="button" (click)="setItemsPerPage(100)" class="btn btn-outline-primary m-1" data-toggle="button"
+    aria-pressed="false" autocomplete="off">100</button>
 </div>

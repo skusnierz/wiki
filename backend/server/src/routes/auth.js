@@ -8,9 +8,7 @@ export default () => {
 
     api.post('/login', passport.authenticate('local', { session: false }), AuthController.login);
 
-    api.post('/register', AuthController.register);
-
-    api.get('/users', AuthController.findAll);
+    api.post('/register', catchAsync(AuthController.register));
 
     return api;
 }

@@ -29,7 +29,7 @@ export default {
     },
 
     async update(req, res, next) {
-        const course = await Course.findOne({ '_id': req.params.id  });
+        const course = await Course.findOne({ '_id': req.params._id  });
         if (!course) return next();
         course.name = req.body.name;
         course.description = req.body.description;
@@ -46,7 +46,7 @@ export default {
     },
 
     async remove(req, res, next) {
-        const course = await Course.findOne({ '_id': req.params.id  });
+        const course = await Course.findOne({ '_id': req.params._id  });
         if (!course) return next();
         await course.remove();
 

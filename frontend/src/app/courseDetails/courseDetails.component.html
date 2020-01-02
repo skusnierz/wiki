@@ -7,6 +7,7 @@
         <img class="card-img-top mt-3 img-fluid" [src]="this.course.image" alt="">
         <div class="card-body text-center">
           <h3 class="card-title"> {{ this.course.name }}</h3>
+          <p class="card-text"> Enrolled students : {{ this.course.enrolledStudents.length }}/{{ this.course.maxStudents  }}</p>
           <p class="card-text"> {{ this.course.description  }}</p>
         </div>
         <hr>
@@ -23,8 +24,10 @@
           </div>
         </div>
         <div *ngIf="this.userService.id">
-          <div class="center" *ngIf="!this.isEnrolled">
-            <a (click)="joinIn()" class="btn btn-primary text-light mt-2">Join in</a>
+          <div *ngIf="this.course.enrolledStudents.length !== this.course.maxStudents ">
+            <div class="center" *ngIf="!this.isEnrolled">
+              <a (click)="joinIn()" class="btn btn-primary text-light mt-2">Join in</a>
+            </div>
           </div>
           <div class="center" *ngIf="this.isEnrolled">
             <a (click)="unsubscribe()" class="btn btn-primary text-light mt-2">Unsubscribe</a>

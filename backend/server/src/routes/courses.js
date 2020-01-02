@@ -16,10 +16,10 @@ export default () => {
     api.post('/', catchAsync(coursesController.create));
 
     // PUT /courses/:id
-    api.put('/:id', catchAsync(coursesController.update));
+    api.put('/:_id', catchAsync(coursesController.update));
 
     // DELETE /courses/:id
-    api.delete('/:id', catchAsync(coursesController.remove));
+    api.delete('/:_id', catchAsync(coursesController.remove));
 
     return api;
 }

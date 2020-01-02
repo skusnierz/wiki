@@ -6,6 +6,7 @@ import express from 'express';
 import { join } from 'path';
 import config from './config/config';
 import courses from './routes/courses';
+import users from './routes/users';
 import auth from './routes/auth'
 import passport from './config/passport'
 import { notFound, catchErrors } from './middlewares/errors';
@@ -41,6 +42,7 @@ app.use(bodyParser.json());
 // routes config
 app.use('/api/courses', courses());
 app.use('/api/auth', auth());
+app.use('/api/users', users());
 
 // errors handling
 app.use(notFound);

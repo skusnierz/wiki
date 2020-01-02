@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CourseService } from './../services/course.service';
 import { UserService } from './../services/user.service';
 import { User } from './../auth/user';
@@ -23,17 +24,30 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     public userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
-
     this.courses.getCourses();
-
+    if (localStorage.getItem('token') != null) {
+      this.router.navigate(['/home']);
+      this.authService.loggedIn.next(true);
+      this.userService.getUser().subscribe(
+        res => {
+          this.userService.setName(res['data'].name);
+          this.userService.setId(res['data']._id);
+          this.userService.setRole(res['data'].role);
+        },
+        err => {
+          localStorage.removeItem('token');
+          console.log(err);
+        }
+      );
+    }
   }
 
   get f() {
@@ -51,7 +65,8 @@ export class LoginComponent implements OnInit {
     this.userService.setRole('');
     this.userService.setId('');
     this.userService.setName('guest');
-    this.authService.login();
+    this.authService.loggedIn.next(true);
+    this.router.navigate(['/home']);
   }
 
   displayRegisterForm() {
@@ -64,11 +79,9 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.userService.login(this.form.value).subscribe(
-      res => {
-        console.log(res);
-        this.userService.setRole(res['user'].role);
-        this.userService.setId(res['user']._id);
-        this.userService.setName(res['user'].name);
+      async res => {
+        this.userService.setId(res['_id']);
+        this.userService.setToken(res['token']);
         this.invalidData = false;
         this.authService.login();
       },

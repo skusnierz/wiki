@@ -30,17 +30,19 @@ export class UserService {
   ];
 
   role: string;
+  token: string;
   name: string;
   id: string;
   baseurl = 'http://localhost:3000';
-  baseurl1 = 'http://localhost:8080/api/auth';
+  baseurl1 = 'http://localhost:8080/api';
   public isDone: boolean;
   constructor(private http: HttpClient) { }
 
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Authorization: `${this.token}`
     })
   };
 
@@ -49,20 +51,30 @@ export class UserService {
   }
 
   addUser(user: User) {
-    return this.http.post(this.baseurl1 + '/register/', user);
+    return this.http.post(this.baseurl1 + '/auth/register/', user);
   }
 
   getUsers() {
     return this.http.get<User[]>(this.baseurl1 + '/users');
   }
 
+  getUser() {
+    return this.http.get<User>(this.baseurl1 + '/users/' + localStorage.getItem('id'), { headers: this.setUpHeaders() });
+  }
+
   login(user) {
-    return this.http.post<User[]>(this.baseurl1 + '/login/', user);
+    return this.http.post<User[]>(this.baseurl1 + '/auth/login/', user);
+  }
+
+  setUpHeaders() {
+    return {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    };
   }
 
   setRole(role: string) {
     this.role = role;
-    console.log(this.role);
   }
 
   setName(name: string) {
@@ -71,6 +83,11 @@ export class UserService {
 
   setId(id: string) {
     this.id = id;
+    localStorage.setItem('id', id);
+  }
+
+  setToken(token: string) {
+    localStorage.setItem('token', token);
   }
 
   havePermission(permission: any) {

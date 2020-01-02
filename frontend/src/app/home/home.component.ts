@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   private sub: any;
   baseurl = 'http://localhost:3000';
   isAdmin = false;
+  itemsPerPage = 10;
   courseSubscription: Subscription;
   constructor(
     private courseService: CourseService,
@@ -45,4 +46,7 @@ export class HomeComponent implements OnInit {
       data.minRating, data.maxRating, data.semesters);
   }
 
+  setItemsPerPage(number) {
+    this.itemsPerPage = number;
+  }
 }
