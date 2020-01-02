@@ -19,7 +19,7 @@
     <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
       <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"><i
             class="fa fa-cog fa-fw fa-lg"></i></a></li>
-      <a class="btn text-light">{{ getUserName() }}</a>
+      <a [hidden]="!isCollapsed" class="btn text-light">{{ getUserName() }}</a>
       <button type="button" (click)="onLogout()" class="btn btn-outline-secondary">Log Out</button>
     </ul>
   </div>
