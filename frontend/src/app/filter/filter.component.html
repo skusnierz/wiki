@@ -1,12 +1,12 @@
 <div class="nav">
 
-  <div class="col-sm">
+  <div class="col-sm mt-3">
     <input class="form-control" type="text" [(ngModel)]="searchText"  (input)="onSearchChange($event.target.value)" name="search" autocomplete="off"
       placeholder="&#61442;  Search">
   </div>
 
   <div *ngIf="loadContent">
-    <div class="col-sm">
+    <div class="col-sm mt-3">
       <form [formGroup]="form" (ngSubmit)="save()" (reset)="resetForm()">
         <ng-multiselect-dropdown #multiSelect [placeholder]="'Select Semester'" [data]="data" [formControl]="f.name"
           [settings]="settings" [disabled]="false" (onFilterChange)="onFilterChange($event)"
@@ -17,11 +17,11 @@
     </div>
   </div>
 
-  <div class="col-sm">
+  <div class="col-sm mt-3">
     <ng5-slider (mouseup)="onSearchChange()" [(value)]="minValueEtcs" [(highValue)]="maxValueEtcs" [options]="optionsEtcs"></ng5-slider>
   </div>
 
-  <div class="col-sm">
+  <div class="col-sm mt-3">
     <ng5-slider (mouseup)="onSearchChange()" [(value)]="minValueRating" [(highValue)]="maxValueRating" [options]="optionsRating"></ng5-slider>
   </div>
 

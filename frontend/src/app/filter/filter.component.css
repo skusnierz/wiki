@@ -7,5 +7,6 @@
 .nav{
     padding: 10px;
     margin-top: 58px;
-    
+    justify-content: center;
+    align-content: center;
 }
