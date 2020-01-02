@@ -10,8 +10,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class CourseService {
 
-  baseurl = 'http://localhost:3000';
-  baseurl1 = 'http://localhost:8080/api/courses/';
+  baseurl = 'http://142.93.107.19:8080/api/courses/';
   constructor(private http: HttpClient) { }
 
   private currentCourses: BehaviorSubject<Course[]> = new BehaviorSubject<Course[]>(null);
@@ -38,7 +37,7 @@ export class CourseService {
 
 
   getCourses() {
-    return this.http.get<Course[]>(this.baseurl1, {
+    return this.http.get<Course[]>(this.baseurl, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -46,11 +45,11 @@ export class CourseService {
   }
 
   getCourse(id: string) {
-    return this.http.get<Course>(this.baseurl1 + id);
+    return this.http.get<Course>(this.baseurl + id);
   }
 
   updateCourse(course: Course, id: string) {
-    return this.http.put<Course>(this.baseurl1 + id, course, {
+    return this.http.put<Course>(this.baseurl + id, course, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -70,7 +69,7 @@ export class CourseService {
   }
 
   addNewCourse(course: Course) {
-    this.http.post(this.baseurl1, course).subscribe(
+    this.http.post(this.baseurl, course).subscribe(
       res => {
         console.log(res);
       },
@@ -80,7 +79,7 @@ export class CourseService {
   }
 
   deleteCourse(id: string) {
-    const response = this.http.delete(this.baseurl1 + id);
+    const response = this.http.delete(this.baseurl + id);
     response.subscribe(() => this.getCourses().subscribe(res =>
       this.currentCourses.next(res['data'])
     ));

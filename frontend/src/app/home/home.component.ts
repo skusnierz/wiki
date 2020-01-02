@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   coursesList: Course[] = [];
   filtredCoursesList: Course[] = [];
   private sub: any;
-  baseurl = 'http://localhost:3000';
   isAdmin = false;
   itemsPerPage = 10;
   courseSubscription: Subscription;

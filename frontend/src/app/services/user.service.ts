@@ -33,8 +33,7 @@ export class UserService {
   token: string;
   name: string;
   id: string;
-  baseurl = 'http://localhost:3000';
-  baseurl1 = 'http://localhost:8080/api';
+  baseurl = 'http://142.93.107.19:8080/api';
   public isDone: boolean;
   constructor(private http: HttpClient) { }
 
@@ -51,19 +50,19 @@ export class UserService {
   }
 
   addUser(user: User) {
-    return this.http.post(this.baseurl1 + '/auth/register/', user);
+    return this.http.post(this.baseurl + '/auth/register/', user);
   }
 
   getUsers() {
-    return this.http.get<User[]>(this.baseurl1 + '/users');
+    return this.http.get<User[]>(this.baseurl + '/users');
   }
 
   getUser() {
-    return this.http.get<User>(this.baseurl1 + '/users/' + localStorage.getItem('id'), { headers: this.setUpHeaders() });
+    return this.http.get<User>(this.baseurl + '/users/' + localStorage.getItem('id'), { headers: this.setUpHeaders() });
   }
 
   login(user) {
-    return this.http.post<User[]>(this.baseurl1 + '/auth/login/', user);
+    return this.http.post<User[]>(this.baseurl + '/auth/login/', user);
   }
 
   setUpHeaders() {
