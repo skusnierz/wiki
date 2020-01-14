@@ -1,7 +1,7 @@
 <app-navBar></app-navBar>
 <div class="container mt-100">
   <h1 class="center">Add Course</h1>
-  <form [formGroup]="addCoursesForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="addCoursesForm">
     <div class="form-group">
       <label for="courseName"> Course Name </label>
       <input type="text" formControlName="courseName" class="form-control"
@@ -44,7 +44,7 @@
     <div class="form-group">
       <label>Course Form</label>
       <ng-select [style.border-color]=" submitted && courseFormIsEmpty() ? '#dc3545': '#fff'"
-        [ngModelOptions]="{standalone: true}" [items]="courseForms" (removed)="removed()" bindLabel="name"
+        [ngModelOptions]="{standalone: true}" [items]="courseForms" bindLabel="name"
         bindValue="id" placeholder="Select course" [(ngModel)]="selectedCourseForm">
       </ng-select>
       <div *ngIf="submitted && courseFormIsEmpty()">

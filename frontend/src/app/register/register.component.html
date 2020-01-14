@@ -1,6 +1,6 @@
 <div class="login-page">
   <div class="form">
-    <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit(userName, password)" autocomplete="off">
+    <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
 
       <input type="email" placeholder="Email" class="form-control" formControlName="email"
         [ngClass]="{ 'is-invalid': formSubmitAttempt}" required>

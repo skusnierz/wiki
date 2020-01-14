@@ -6,8 +6,8 @@
   "scripts": {
     "build": "rimraf ./dist && babel ./src -d ./dist",
     "prestart": "npm run -s build",
-    "start": "NODE_ENV=production PORT=8080 node dist/index.js",
-    "dev": "NODE_ENV=development PORT=8080 nodemon -w ./src --exec \"babel-node ./src\""
+    "start": "NODE_ENV=production PORT=3000 node dist/index.js",
+    "dev": "NODE_ENV=development PORT=3000 nodemon -w ./src --exec \"babel-node ./src\""
   },
   "keywords": [],
   "author": "",
@@ -18,7 +18,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.1.2",
+    "mongoose": "5.6.1",
     "mongoose-url-slugs": "^1.0.2",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",

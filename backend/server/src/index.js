@@ -25,6 +25,7 @@ import mongoose from 'mongoose';
 mongoose.connect(dbConfig.mongoUrl);
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (err) => {
+    console.log(err);
     console.log('Could not connect to the database. Exiting now...');
     process.exit();
 });

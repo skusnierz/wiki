@@ -15,16 +15,16 @@ import { AuthService } from './../auth/auth.service';
 export class LoginComponent implements OnInit {
   userList: any = [];
   form: FormGroup;
-  private formSubmitAttempt: boolean;
+  public formSubmitAttempt: boolean;
   invalidData = false;
-
+  public p: any;
   users: Array<User>;
   constructor(
-    private courses: CourseService,
-    private fb: FormBuilder,
-    private authService: AuthService,
+    public courses: CourseService,
+    public fb: FormBuilder,
+    public authService: AuthService,
     public userService: UserService,
-    private router: Router
+    public router: Router
   ) { }
 
   ngOnInit() {

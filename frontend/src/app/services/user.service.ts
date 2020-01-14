@@ -1,9 +1,7 @@
+import { environment } from './../../environments/environment';
 import { User } from './../auth/user';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
-import { element } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +31,6 @@ export class UserService {
   token: string;
   name: string;
   id: string;
-  baseurl = 'http://142.93.107.19:8080/api';
   public isDone: boolean;
   constructor(private http: HttpClient) { }
 
@@ -50,19 +47,19 @@ export class UserService {
   }
 
   addUser(user: User) {
-    return this.http.post(this.baseurl + '/auth/register/', user);
+    return this.http.post(environment.apiUrl + 'auth/register/', user);
   }
 
   getUsers() {
-    return this.http.get<User[]>(this.baseurl + '/users');
+    return this.http.get<User[]>(environment.apiUrl + 'users');
   }
 
   getUser() {
-    return this.http.get<User>(this.baseurl + '/users/' + localStorage.getItem('id'), { headers: this.setUpHeaders() });
+    return this.http.get<User>(environment.apiUrl + 'users/' + localStorage.getItem('id'), { headers: this.setUpHeaders() });
   }
 
   login(user) {
-    return this.http.post<User[]>(this.baseurl + '/auth/login/', user);
+    return this.http.post<User[]>(environment.apiUrl + 'auth/login/', user);
   }
 
   setUpHeaders() {

@@ -12,14 +12,14 @@ import { AuthService } from './../auth/auth.service';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-  private formSubmitAttempt: boolean;
-  private emailAlreadyExist: boolean;
-  private registrationComplete: boolean;
+  public formSubmitAttempt: boolean;
+  public emailAlreadyExist: boolean;
+  public registrationComplete: boolean;
   userList = [];
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private userService: UserService,
+    public fb: FormBuilder,
+    public authService: AuthService,
+    public userService: UserService,
   ) { }
 
   onLogout() {

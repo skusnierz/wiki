@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   loggedUserRole: any;
   coursesList: Course[] = [];
   filtredCoursesList: Course[] = [];
-  private sub: any;
+  public p: any;
   isAdmin = false;
   itemsPerPage = 10;
   courseSubscription: Subscription;

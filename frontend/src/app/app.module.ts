@@ -47,7 +47,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CourseDetailsComponent,
     NavBarComponent,
     AddCourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
+    SearchPipe
   ],
   imports: [
     NgbModule,

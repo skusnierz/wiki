@@ -30,8 +30,8 @@ export class CourseDetailsComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private courseService: CourseService,
-    private userService: UserService
+    public courseService: CourseService,
+    public userService: UserService
   ) {
   }
 

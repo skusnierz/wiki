@@ -15,7 +15,7 @@ export class CourseComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: UserService,
+    public userService: UserService,
     private courseService: CourseService
     ) {}
   submitted = false;

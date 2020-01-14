@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { async } from '@angular/core/testing';
 import { UserService } from './user.service';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -10,7 +11,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class CourseService {
 
-  baseurl = 'http://142.93.107.19:8080/api/courses/';
+  baseurl = environment.apiUrl + 'courses/';
   constructor(private http: HttpClient) { }
 
   private currentCourses: BehaviorSubject<Course[]> = new BehaviorSubject<Course[]>(null);
